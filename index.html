@@ -90,7 +90,7 @@ const tglLahir = document.getElementById('tglLahir').value;
 const tujuan = document.getElementById('tujuan').value.trim();
 const jawaban = document.getElementById('jawaban').value.trim().toLowerCase();
 const hasil = document.getElementById('hasil');
-const linkWA = "https://chat.whatsapp.com/xxxxxx"; // ganti dengan link grupmu
+const linkWA = "https://chat.whatsapp.com/DokkCBRTwd8FhRokbck3BF?mode=hqrt2"; // ganti dengan link grupmu
 const umurMinimal = 14;
 
 // Hitung umur
@@ -103,18 +103,16 @@ umur--;
 }
 
 // Validasi jawaban (boleh ganti sesuai bintang yang diterima)
-const jawabanBenar = ["matahari", "sirius", "polaris"]; // contoh jawaban diterima
-
-if (umur >= umurMinimal && jawabanBenar.includes(jawaban)) {
-hasil.innerHTML = `Selamat ${nama}! Klik <a href="${linkWA}" target="_blank">di sini</a> untuk masuk grup WhatsApp.`;
-} else if (umur < umurMinimal) {
-hasil.innerText = `Maaf ${nama}, umur kamu belum cukup untuk masuk grup (minimal ${umurMinimal} tahun).`;
+if (umur >= umurMinimal) {
+  // semua jawaban pertanyaan dianggap benar
+  hasil.innerHTML = `Selamat ${nama}! Klik <a href="${linkWA}" target="_blank">di sini</a> untuk masuk grup WhatsApp.`;
 } else {
-hasil.innerText = `Jawaban tidak sesuai. Tidak bisa masuk grup.`;
+  hasil.innerText = `Maaf ${nama}, umur kamu belum cukup untuk masuk grup (minimal ${umurMinimal} tahun).`;
 }
 });
 </script>
 
 </body>
 </html>
+
 
