@@ -11,7 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
   }
   .container {
     background: #fff;
@@ -19,42 +20,17 @@
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
   }
   h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
   }
-  label {
-    font-weight: bold;
-  }
-  input, button {
+  iframe {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0 15px 0;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  button {
-    background: #25D366;
-    color: white;
-    font-weight: bold;
+    height: 916px; /* menyesuaikan tinggi Google Form */
     border: none;
-    cursor: pointer;
-  }
-  button:hover {
-    background: #128C7E;
-  }
-  #hasil {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 15px;
-  }
-  a {
-    color: #25D366;
-    text-decoration: none;
   }
 </style>
 </head>
@@ -62,54 +38,11 @@
 
 <div class="container">
   <h2>Form Pendaftaran Grup WhatsApp</h2>
-  <form id="formDaftar">
-    <label>Nama:</label>
-    <input type="text" id="nama" required>
-
-    <label>Tanggal Lahir:</label>
-    <input type="date" id="tglLahir" required>
-
-    <label>Tujuan Masuk Grup:</label>
-    <input type="text" id="tujuan" required>
-
-    <label>Pertanyaan: Bintang apa yang kamu sukai?</label>
-    <input type="text" id="jawaban" required>
-
-    <button type="submit">Submit</button>
-  </form>
-  <p id="hasil"></p>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdPuH8YW3PWwd-dHhZG4t9hx84H7_mEceLJwUKLvODWFfiNQQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
 </div>
 
-<script>
-  const form = document.getElementById('formDaftar');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const nama = document.getElementById('nama').value.trim();
-    const tglLahir = document.getElementById('tglLahir').value;
-    const tujuan = document.getElementById('tujuan').value.trim();
-    const hasil = document.getElementById('hasil');
-    const linkWA = "https://chat.whatsapp.com/DokkCBRTwd8FhRokbck3BF?mode=hqrt2";
-    const umurMinimal = 14;
-
-    // Hitung umur
-    const hariIni = new Date();
-    const lahir = new Date(tglLahir);
-    let umur = hariIni.getFullYear() - lahir.getFullYear();
-    const bulan = hariIni.getMonth() - lahir.getMonth();
-    if (bulan < 0 || (bulan === 0 && hariIni.getDate() < lahir.getDate())) {
-      umur--;
-    }
-
-    // Validasi umur (semua jawaban diterima)
-    if (umur >= umurMinimal) {
-      hasil.innerHTML = `Selamat ${nama}! Klik <a href="${linkWA}" target="_blank">di sini</a> untuk masuk grup WhatsApp.`;
-    } else {
-      hasil.innerText = `Maaf ${nama}, umur kamu belum cukup untuk masuk grup (minimal ${umurMinimal} tahun).`;
-    }
-  });
-</script>
-
 </body>
-  </html>
+</html>
+
+
 
